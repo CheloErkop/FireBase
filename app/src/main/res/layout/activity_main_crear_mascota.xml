@@ -6,41 +6,60 @@
     android:layout_height="match_parent"
     tools:context=".MainCrearMascota">
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="148dp"
+        android:layout_height="176dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_pets_24" />
+
     <EditText
-        android:id="@+id/txtnombre"
+        android:id="@+id/addnombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="56dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="Nombre"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="209dp" />
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <EditText
-        android:id="@+id/txtedad"
+        android:id="@+id/addedad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="32dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="Edad"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="277dp" />
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addnombre" />
 
     <EditText
-        android:id="@+id/txtcolor"
+        android:id="@+id/addcolor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="36dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="Color"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="343dp" />
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addedad" />
 
     <Button
         android:id="@+id/btnRegistrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="52dp"
         android:text="Registrar"
-        tools:layout_editor_absoluteX="147dp"
-        tools:layout_editor_absoluteY="495dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addcolor" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
