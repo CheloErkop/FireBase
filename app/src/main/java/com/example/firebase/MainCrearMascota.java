@@ -26,37 +26,43 @@ public class MainCrearMascota extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mFirestore = FirebaseFirestore.getInstance();
 
-        nombre = findViewById(R.id.txtnombre);
-        edad = findViewById(R.id.txtedad);
-        color = findViewById(R.id.txtcolor);
-        btn_add = findViewById(R.id.btnRegistrar);
+        nombre = findViewById(R.id.addnombre);
+        edad = findViewById(R.id.addedad);
+        color = findViewById(R.id.addcolor);
+        btn_add= findViewById(R.id.btnRegistrar);
+
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String n = nombre.getText().toString();
                 String e = edad.getText().toString();
                 String c = color.getText().toString();
-                if (n.isEmpty() && e.isEmpty() && c.isEmpty()){
+
+                if (n.isEmpty()&& e.isEmpty()&& c.isEmpty()){
                     Toast.makeText(getApplicationContext(), "Ingresar los datos", Toast.LENGTH_SHORT).show();
                 }else{
-                    postPet(n,e,c);
+                    Map <String, Object> map = new HashMap<>();
+                    map.put("nombre", nombre.getText().toString());
+                    map.put("edad", edad.getText().toString());
+                    map.put("color",color.getText().toString());
+
+
+                    mFirestore.collection("mascotas").add(map).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+                            Toast.makeText(getApplicationContext(), "Creado Exitosamente", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getApplicationContext(), "Error al Ingresar", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
             }
         });
-        }
 
-        private void postPet(String n, String e, String c){
-            Map<String, Object> map = new HashMap<>();
-            map.put("nombre",nombre);
-            map.put("edad",edad);
-            map.put("color",color);
-
-            mFirestore.collection("mascotas").add(map).addOnSuccessListener (new OnSuccessListener<DocumentReference>()){
-
-            }
-
-
-
-
-        }
     }
+
+}
